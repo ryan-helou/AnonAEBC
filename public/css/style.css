@@ -1,0 +1,270 @@
+/* ============================================================
+   AnonAEBC - Stylesheet
+   Clean, minimalist, mobile-first design
+   ============================================================ */
+
+/* ----- Reset & Base ----- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #faf8f5; /* soft beige */
+  color: #1a1a2e;            /* dark navy text */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ----- Container ----- */
+.container {
+  width: 100%;
+  max-width: 520px;
+  padding: 2rem 1.25rem;
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* ----- Header ----- */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #16213e; /* dark blue */
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
+/* ----- Form Elements ----- */
+textarea,
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d1d1d1;
+  border-radius: 10px;
+  background: #fff;
+  color: #1a1a2e;
+  resize: vertical;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+  border-color: #16213e;
+}
+
+textarea {
+  min-height: 120px;
+}
+
+/* Character counter */
+.char-count {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.char-count.over-limit {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* ----- Buttons ----- */
+button {
+  display: block;
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #16213e; /* dark blue */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: #1a2a50;
+}
+
+button:active {
+  opacity: 0.85;
+}
+
+button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: #16213e;
+  border: 2px solid #16213e;
+}
+
+.secondary-btn:hover {
+  background-color: #16213e;
+  color: #fff;
+}
+
+/* ----- Disclaimer ----- */
+.disclaimer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.75rem;
+}
+
+/* ----- Success Message ----- */
+.success-message {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-message .checkmark {
+  display: block;
+  font-size: 3rem;
+  color: #27ae60;
+  margin-bottom: 0.75rem;
+}
+
+.success-message p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 1.5rem;
+}
+
+/* ----- Error Message ----- */
+.error {
+  background-color: #fdecea;
+  color: #c0392b;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* ----- Admin Link ----- */
+.admin-link {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.admin-link:hover {
+  color: #16213e;
+}
+
+/* ----- Dashboard ----- */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.dashboard-header h2 {
+  font-size: 1.15rem;
+  color: #16213e;
+}
+
+.dashboard-header .secondary-btn {
+  width: auto;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Question card in admin dashboard */
+.question-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 0.75rem;
+  transition: box-shadow 0.2s;
+}
+
+.question-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.question-card .question-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1a1a2e;
+  word-wrap: break-word;
+}
+
+.question-card .question-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.65rem;
+}
+
+.question-card .timestamp {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.question-card .delete-btn {
+  width: auto;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  background-color: #c0392b;
+  border-radius: 6px;
+}
+
+.question-card .delete-btn:hover {
+  background-color: #a93226;
+}
+
+/* ----- Utility Classes ----- */
+.hidden {
+  display: none !important;
+}
+
+.muted {
+  color: #888;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 2rem 0;
+}
+
+/* ----- Desktop Adjustments ----- */
+@media (min-width: 600px) {
+  .container {
+    padding: 3rem 1.5rem;
+  }
+
+  header h1 {
+    font-size: 2.4rem;
+  }
+}

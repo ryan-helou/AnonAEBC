@@ -1,0 +1,15 @@
+{
+  "name": "anonaebc",
+  "version": "1.0.0",
+  "description": "Anonymous question submission platform for AEBC church",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0"
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnonAEBC - Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AnonAEBC</h1>
+      <p class="subtitle">Admin Dashboard</p>
+    </header>
+
+    <!-- Login prompt (shown first) -->
+    <main id="login-view">
+      <form id="login-form">
+        <input
+          type="password"
+          id="password-input"
+          placeholder="Enter admin password"
+          required
+        />
+        <button type="submit">Log In</button>
+      </form>
+      <div id="login-error" class="error hidden"></div>
+    </main>
+
+    <!-- Admin dashboard (hidden until authenticated) -->
+    <main id="dashboard-view" class="hidden">
+      <div class="dashboard-header">
+        <h2>Submitted Questions</h2>
+        <button id="refresh-btn" class="secondary-btn">Refresh</button>
+      </div>
+      <div id="questions-list">
+        <!-- Questions will be inserted here by JS -->
+      </div>
+      <p id="no-questions" class="hidden muted">No questions yet.</p>
+    </main>
+  </div>
+
+  <!-- Link back to homepage -->
+  <a href="/" class="admin-link">Home</a>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

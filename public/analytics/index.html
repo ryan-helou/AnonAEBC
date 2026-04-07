@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Admin - Shabibeh</title>
+  <title>Analytics - Shabibeh</title>
   <link rel="icon" type="image/png" href="/churchlogo.png">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container container-analytics">
     <header>
-      <h1>⚙️ Admin</h1>
+      <h1>📊 Analytics</h1>
+      <p class="subtitle">Visitor tracking, engagement metrics, and event insights</p>
     </header>
 
     <!-- Login -->
@@ -22,134 +23,84 @@
       <div id="login-error" class="error hidden"></div>
     </main>
 
-    <!-- Admin Dashboard -->
-    <main id="admin-view" class="hidden">
-
-      <!-- Visibility Toggles -->
-      <div class="admin-section">
-        <h2 class="admin-section-title">Section Visibility</h2>
-        <p class="admin-section-desc">Toggle sections on or off for everyone</p>
-        <div class="toggle-list">
-          <div class="toggle-row" data-key="show_questions">
-            <div class="toggle-label">
-              <span>💬</span>
-              <span>Questions</span>
-            </div>
-            <button class="toggle-switch on" aria-label="Toggle Questions"></button>
-          </div>
-          <div class="toggle-row" data-key="show_recordings">
-            <div class="toggle-label">
-              <span>🎙️</span>
-              <span>Recordings</span>
-            </div>
-            <button class="toggle-switch on" aria-label="Toggle Recordings"></button>
-          </div>
-          <div class="toggle-row" data-key="show_slides">
-            <div class="toggle-label">
-              <span>📖</span>
-              <span>Sermon Slides</span>
-            </div>
-            <button class="toggle-switch on" aria-label="Toggle Slides"></button>
-          </div>
-          <div class="toggle-row" data-key="show_live_qa">
-            <div class="toggle-label">
-              <span>🙋</span>
-              <span>Live Q&A</span>
-            </div>
-            <button class="toggle-switch on" aria-label="Toggle Live Q&A"></button>
-          </div>
+    <!-- Analytics Dashboard -->
+    <main id="dashboard-view" class="hidden">
+      <div class="analytics-header-row">
+        <div>
+          <h2 class="admin-section-title">Performance Overview</h2>
+          <p class="admin-section-desc">Track daily unique visitors, engagement, and user interactions</p>
+        </div>
+        <div class="analytics-controls">
+          <label for="analytics-days" class="sr-only">Analytics range</label>
+          <select id="analytics-days" class="analytics-select">
+            <option value="7">Last 7 days</option>
+            <option value="14">Last 14 days</option>
+            <option value="30" selected>Last 30 days</option>
+            <option value="60">Last 60 days</option>
+            <option value="90">Last 90 days</option>
+          </select>
+          <button id="analytics-refresh-btn" class="secondary-btn analytics-refresh-btn" type="button">Refresh</button>
         </div>
       </div>
 
-      <!-- Analytics -->
-      <div class="admin-section">
-        <div class="analytics-header-row">
-          <div>
-            <h2 class="admin-section-title">Advanced Analytics</h2>
-            <p class="admin-section-desc">Daily unique visitors, clicks, page performance, and raw event feed</p>
-          </div>
-          <div class="analytics-controls">
-            <label for="analytics-days" class="sr-only">Analytics range</label>
-            <select id="analytics-days" class="analytics-select">
-              <option value="7">Last 7 days</option>
-              <option value="14">Last 14 days</option>
-              <option value="30" selected>Last 30 days</option>
-              <option value="60">Last 60 days</option>
-              <option value="90">Last 90 days</option>
-            </select>
-            <button id="analytics-refresh-btn" class="secondary-btn analytics-refresh-btn" type="button">Refresh</button>
-          </div>
-        </div>
+      <div id="analytics-error" class="error hidden"></div>
 
-        <div id="analytics-error" class="error hidden"></div>
-
-        <div class="analytics-metrics" id="analytics-metrics">
-          <article class="metric-card">
-            <p class="metric-label">Unique Visitors</p>
-            <p class="metric-value" id="metric-unique-visitors">-</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-label">Total Events</p>
-            <p class="metric-value" id="metric-total-events">-</p>
-          </article>
-          <article class="metric-card">
-            <p class="metric-label">Avg Events / Day</p>
-            <p class="metric-value" id="metric-avg-events">-</p>
-          </article>
-        </div>
-
-        <div class="analytics-grid">
-          <section class="analytics-card">
-            <h3 class="analytics-card-title">Daily Trend</h3>
-            <div id="daily-trend" class="daily-trend"></div>
-          </section>
-
-          <section class="analytics-card">
-            <h3 class="analytics-card-title">Top Pages</h3>
-            <div id="top-pages" class="analytics-list"></div>
-          </section>
-
-          <section class="analytics-card">
-            <h3 class="analytics-card-title">Top Click Targets</h3>
-            <div id="top-clicks" class="analytics-list"></div>
-          </section>
-
-          <section class="analytics-card analytics-card-full">
-            <h3 class="analytics-card-title">Recent Events</h3>
-            <div id="recent-events" class="events-table-wrap"></div>
-          </section>
-        </div>
+      <!-- KPI Cards -->
+      <div class="analytics-metrics" id="analytics-metrics">
+        <article class="metric-card">
+          <p class="metric-label">Unique Visitors</p>
+          <p class="metric-value" id="metric-unique-visitors">-</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">Total Events</p>
+          <p class="metric-value" id="metric-total-events">-</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">Avg Events / Day</p>
+          <p class="metric-value" id="metric-avg-events">-</p>
+        </article>
       </div>
 
-      <!-- Nav to Tools -->
-      <div class="admin-section">
-        <h2 class="admin-section-title">Tools</h2>
-        <nav class="settings-nav">
-          <a href="/analytics" class="nav-card">
-            <span class="nav-icon">📊</span>
-            <span class="nav-label">Analytics</span>
-            <span class="nav-desc">View visitor metrics and engagement data</span>
-          </a>
-          <a href="/ideas" class="nav-card">
-            <span class="nav-icon">💡</span>
-            <span class="nav-label">Ideas</span>
-            <span class="nav-desc">Track future website improvements</span>
-          </a>
-        </nav>
+      <!-- Analytics Grid -->
+      <div class="analytics-grid-full">
+        <section class="analytics-card-large">
+          <h3 class="analytics-card-title">Daily Visitor Trend</h3>
+          <div id="daily-trend" class="daily-trend"></div>
+        </section>
+
+        <section class="analytics-card-large">
+          <h3 class="analytics-card-title">Event Breakdown</h3>
+          <div id="event-breakdown" class="analytics-list"></div>
+        </section>
+
+        <section class="analytics-card-large">
+          <h3 class="analytics-card-title">Top Viewed Pages</h3>
+          <div id="top-pages" class="analytics-list"></div>
+        </section>
+
+        <section class="analytics-card-large">
+          <h3 class="analytics-card-title">Most Clicked Elements</h3>
+          <div id="top-clicks" class="analytics-list"></div>
+        </section>
+
+        <section class="analytics-card-large analytics-full-width">
+          <h3 class="analytics-card-title">Recent Events Feed</h3>
+          <div id="recent-events" class="events-table-wrap"></div>
+        </section>
       </div>
     </main>
   </div>
 
-  <a href="/" class="home-btn" title="Home">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>Back to Home</span>
+  <a href="/settings" class="home-btn" title="Back to Settings">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+    <span>Back</span>
   </a>
 
   <script src="/js/analytics.js"></script>
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const loginView = document.getElementById('login-view');
-    const adminView = document.getElementById('admin-view');
+    const dashboardView = document.getElementById('dashboard-view');
     const loginForm = document.getElementById('login-form');
     const passwordInput = document.getElementById('password-input');
     const loginError = document.getElementById('login-error');
@@ -184,8 +135,7 @@
         if (res.ok) {
           localStorage.setItem('admin_password', pw);
           loginView.classList.add('hidden');
-          adminView.classList.remove('hidden');
-          loadSettings();
+          dashboardView.classList.remove('hidden');
           loadAnalytics();
         } else {
           loginError.textContent = 'Wrong password.';
@@ -258,6 +208,26 @@
       }).join('');
     }
 
+    function renderEventBreakdown(events) {
+      const container = document.getElementById('event-breakdown');
+      if (!Array.isArray(events) || events.length === 0) {
+        container.innerHTML = '<p class="muted analytics-empty">No event data yet.</p>';
+        return;
+      }
+
+      container.innerHTML = events.map((item, index) => {
+        const name = item.event_name || 'Unknown';
+        const count = Number(item.count) || 0;
+        return `
+          <div class="rank-item">
+            <span class="rank-index">${index + 1}</span>
+            <span class="rank-label">${escapeHtml(name)}</span>
+            <span class="rank-value">${formatNumber(count)} events</span>
+          </div>
+        `;
+      }).join('');
+    }
+
     function renderRankedList(targetId, items, valueKey, labelKey, suffix = '') {
       const container = document.getElementById(targetId);
       if (!Array.isArray(items) || items.length === 0) {
@@ -265,7 +235,7 @@
         return;
       }
 
-      container.innerHTML = items.slice(0, 10).map((item, index) => {
+      container.innerHTML = items.slice(0, 12).map((item, index) => {
         const label = item[labelKey] || 'Unknown';
         const value = Number(item[valueKey]) || 0;
         return `
@@ -285,7 +255,7 @@
         return;
       }
 
-      const rows = events.slice(0, 25).map((event) => {
+      const rows = events.slice(0, 50).map((event) => {
         const when = event.occurred_at ? new Date(event.occurred_at).toLocaleString() : '-';
         const name = event.event_name || '-';
         const page = event.page_path || '-';
@@ -328,7 +298,7 @@
         const headers = { 'x-admin-password': adminPassword };
         const [overviewRes, eventsRes] = await Promise.all([
           fetch(`/api/analytics/admin/overview?days=${encodeURIComponent(days)}`, { headers }),
-          fetch('/api/analytics/admin/events?limit=100', { headers }),
+          fetch('/api/analytics/admin/events?limit=200', { headers }),
         ]);
 
         if (!overviewRes.ok || !eventsRes.ok) {
@@ -340,58 +310,17 @@
 
         renderMetricCards(overviewData);
         renderDailyTrend(overviewData.daily || []);
+        renderEventBreakdown(overviewData.event_breakdown || []);
         renderRankedList('top-pages', overviewData.top_pages || [], 'views', 'page_path', ' views');
         renderRankedList('top-clicks', overviewData.top_clicks || [], 'count', 'element', ' clicks');
         renderRecentEvents(eventsData.events || []);
       } catch {
-        showAnalyticsError('Analytics is unavailable right now. Make sure the analytics table exists and try again.');
+        showAnalyticsError('Analytics is unavailable. Make sure the analytics_events table exists in Supabase.');
       } finally {
         analyticsRefreshBtn.disabled = false;
         analyticsLoading = false;
       }
     }
-
-    // Load current settings
-    async function loadSettings() {
-      try {
-        const res = await fetch('/api/settings');
-        const data = await res.json();
-        const settings = data.settings || {};
-
-        document.querySelectorAll('.toggle-row').forEach(row => {
-          const key = row.dataset.key;
-          const btn = row.querySelector('.toggle-switch');
-          // Default to ON if no setting exists
-          const isOn = settings[key] !== false;
-          btn.classList.toggle('on', isOn);
-        });
-      } catch {}
-    }
-
-    // Toggle clicks
-    document.querySelectorAll('.toggle-row').forEach(row => {
-      const key = row.dataset.key;
-      const btn = row.querySelector('.toggle-switch');
-
-      btn.addEventListener('click', async () => {
-        const newValue = !btn.classList.contains('on');
-        btn.classList.toggle('on', newValue);
-
-        try {
-          await fetch('/api/settings', {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-admin-password': adminPassword,
-            },
-            body: JSON.stringify({ key, value: newValue }),
-          });
-        } catch {
-          // Revert on failure
-          btn.classList.toggle('on', !newValue);
-        }
-      });
-    });
 
     analyticsRefreshBtn.addEventListener('click', () => {
       loadAnalytics();
